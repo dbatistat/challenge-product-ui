@@ -12,6 +12,7 @@ import { Subscription } from 'rxjs'
 import { SpinnerService } from '../../core/services/spinner.service'
 import { AuthGuard } from '../../core/guards/auth.guard'
 import { AuthService } from '../../core/services/auth.service'
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-layout',
@@ -21,9 +22,7 @@ import { AuthService } from '../../core/services/auth.service'
 export class LayoutComponent implements OnInit, OnDestroy, AfterViewInit {
   private _mobileQueryListener: () => void
   mobileQuery: MediaQueryList
-  showSpinner: boolean = false
   userName: string = ''
-  isAdmin: boolean = false
 
   private autoLogoutSubscription: Subscription = new Subscription()
 
@@ -33,6 +32,7 @@ export class LayoutComponent implements OnInit, OnDestroy, AfterViewInit {
     public spinnerService: SpinnerService,
     private authService: AuthService,
     private authGuard: AuthGuard,
+    private router: Router,
   ) {
     this.mobileQuery = this.media.matchMedia('(max-width: 1000px)')
     this._mobileQueryListener = () => changeDetectorRef.detectChanges()
@@ -60,5 +60,10 @@ export class LayoutComponent implements OnInit, OnDestroy, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.changeDetectorRef.detectChanges()
+  }
+
+  logout(): void {
+    this.authService.logout()
+    this.router.navigate(['/auth/login'])
   }
 }

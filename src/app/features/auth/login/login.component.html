@@ -29,6 +29,16 @@
         </button>
         <button mat-button id="resetPassword" (click)="resetPassword()" type="button" class="tw-ml-3">Recuperar contraseña</button>
       </div>
+
+      <div class="tw-flex tw-justify-center tw-mt-5 tw-p-0">
+        <p>Si no tienes una cuenta, crea aqui!</p>
+      </div>
+
+      <div class="tw-flex tw-justify-center tw-p-0">
+        <button mat-raised-button color="accent"
+                (click)="signIn()">Crear cuenta
+        </button>
+      </div>
     </mat-card>
 
     <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>

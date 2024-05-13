@@ -19,12 +19,14 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
 import { MatIcon } from '@angular/material/icon'
 import { ResetPasswordRequestComponent } from './reset-password-request/reset-password-request.component'
 import { SharedModule } from '../../shared/shared.module'
+import { CreateAccountComponent } from './create-account/create-account.component'
 
 @NgModule({
   declarations: [
     LoginComponent,
     ResetPasswordComponent,
     ResetPasswordRequestComponent,
+    CreateAccountComponent,
   ],
   imports: [
     CommonModule,

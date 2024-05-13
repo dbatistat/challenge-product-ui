@@ -28,7 +28,7 @@
         <span>Cuenta</span>
       </a>
 
-      <a mat-menu-item [routerLink]="['/auth/login']">
+      <a mat-menu-item (click)="logout()">
         <mat-icon>exit_to_app</mat-icon>
         <span>Salir</span>
       </a>
@@ -68,7 +68,7 @@
           <div matListItemTitle class="list-item">Perfil</div>
         </a>
 
-        <a mat-list-item class="list-item-content" [routerLink]="['/auth/login']">
+        <a mat-list-item class="list-item-content" (click)="logout()">
           <mat-icon matListItemIcon class="list-icon">
             exit_to_app
           </mat-icon>

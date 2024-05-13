@@ -2,7 +2,7 @@ import { Inject, Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { environment } from '../../../enviroments/enviroment'
 import { firstValueFrom } from 'rxjs'
-import { LoggedIn, User } from '../models/auth.interfaces'
+import { LoggedIn, SignIn, User } from '../models/auth.interfaces'
 
 @Injectable({
   providedIn: 'root',
@@ -10,6 +10,7 @@ import { LoggedIn, User } from '../models/auth.interfaces'
 export class AuthService {
   private apiUrl = environment.apiUrl
   private loggedIn = 'loggedIn'
+  private currentUser = 'currentUser'
 
   constructor(
     private http: HttpClient,
@@ -23,23 +24,25 @@ export class AuthService {
         password,
       }),
     ).then((loggedIn) => {
+      this.localStorage.removeItem(this.loggedIn)
+      this.localStorage.removeItem(this.currentUser)
       this.localStorage.setItem(this.loggedIn, JSON.stringify(loggedIn))
     })
   }
 
   logout(): void {
     this.localStorage.removeItem(this.loggedIn)
-    this.localStorage.removeItem('currentUser')
+    this.localStorage.removeItem(this.currentUser)
   }
 
   async getCurrentUser(): Promise<User> {
-    const currentUser = this.localStorage.getItem('currentUser')
+    const currentUser = this.localStorage.getItem(this.currentUser)
 
     if (currentUser == null) {
       return firstValueFrom(
         this.http.post<User>(`${this.apiUrl}/auth/user`, {}),
       ).then((user) => {
-        this.localStorage.setItem('currentUser', JSON.stringify(user))
+        this.localStorage.setItem(this.currentUser, JSON.stringify(user))
 
         return user
       })
@@ -56,6 +59,12 @@ export class AuthService {
     }
 
     return null
+  }
+
+  async signIn(signIn: SignIn): Promise<void> {
+    return firstValueFrom(
+      this.http.post<void>(`${this.apiUrl}/auth/signIn`, signIn),
+    )
   }
 
   async resetPasswordRequest(email: string): Promise<void> {

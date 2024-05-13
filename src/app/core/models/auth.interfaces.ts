@@ -8,3 +8,10 @@ export interface User {
 export interface LoggedIn {
   accessToken: string
 }
+
+export interface SignIn {
+  username: string
+  password: string
+  fullname: string
+  email: string
+}

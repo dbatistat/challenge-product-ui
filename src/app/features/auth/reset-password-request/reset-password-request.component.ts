@@ -57,6 +57,6 @@ export class ResetPasswordRequestComponent implements OnInit {
   }
 
   cancel() {
-    this.router.navigate(['/'])
+    this.router.navigate(['/auth/login'])
   }
 }
