@@ -1,15 +1,74 @@
-<div class="container flex justify-center items-none">
+<div class="container flex justify-center items-none" *ngIf="user">
   <div class="tw-w-11/12 container-card">
     <mat-card>
       <mat-card-content>
         <h2>Perfil</h2>
-        <div class="container flex justify-center items-none">
-          <div class=" tw-w-full text-center no-records animate">
-            <mat-icon>person</mat-icon>
-            <p>No existe perfils</p>
-            <p>(Aun no se ha implementado)</p>
+        <div class="tw-flex ">
+          <div class=" tw-w-1/4 ">
+            <div class="tw-text-center">
+              <div class="tw-flex tw-justify-center">
+                <img src="assets/images/user.png" [alt]="user.fullname">
+              </div>
+              <h2 class="title">
+                {{user.fullname}}
+              </h2>
+
+              <h4>
+                Usuario: {{user.username}}
+              </h4>
+
+              <label>
+                {{user.email}}
+              </label>
+            </div>
           </div>
-          <mat-icon></mat-icon>
+
+          <div class="tw-w-3/4" *ngIf="form">
+            <h2>Cambiar contraseña</h2>
+            <form [formGroup]="form">
+              <mat-form-field class="full-width tw-mt-2">
+                <mat-label>Actual contraseña</mat-label>
+                <input matInput placeholder="Actual contraseña" formControlName="currentPassword" [type]="hideCurrentPassword ? 'password' : 'text'"
+                       autocomplete="current-password">
+                <mat-icon matSuffix (click)="hideCurrentPassword = !hideCurrentPassword">
+                  {{hideCurrentPassword ? 'visibility' : 'visibility_off'}}
+                </mat-icon>
+
+                <mat-error *ngIf="form.controls['currentPassword'].hasError('required')">
+                  Por favor escribe tu actual contraseña
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field class="full-width tw-mt-2">
+                <mat-label>Nueva contraseña</mat-label>
+                <input matInput placeholder="Nueva contraseña" formControlName="newPassword" [type]="hideNewPassword ? 'password' : 'text'" autocomplete="new-password">
+                <mat-icon matSuffix (click)="hideNewPassword = !hideNewPassword">
+                  {{hideNewPassword ? 'visibility' : 'visibility_off'}}
+                </mat-icon>
+
+                <mat-error *ngIf="form.controls['newPassword'].hasError('required')">
+                  Por favor escribe una nueva contraseña
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field class="full-width tw-mt-2">
+                <mat-label>Confirmar nueva contraseña</mat-label>
+                <input matInput placeholder="Confirmar nueva contraseña" formControlName="newPasswordConfirm" [type]="hideNewPassword ? 'password' : 'text'"
+                       autocomplete="new-password">
+                <mat-icon matSuffix (click)="hideNewPassword = !hideNewPassword">
+                  {{hideNewPassword ? 'visibility' : 'visibility_off'}}
+                </mat-icon>
+
+                <mat-error *ngIf="form.controls['newPasswordConfirm'].hasError('required')">
+                  Por favor confirma tu nueva contraseña
+                </mat-error>
+              </mat-form-field>
+
+              <button mat-raised-button color="primary" [disabled]="form.invalid || disableSubmit" (click)="changePassword()">Cambiar contraseña</button>
+
+            </form>
+
+          </div>
         </div>
 
       </mat-card-content>

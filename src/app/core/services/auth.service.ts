@@ -83,4 +83,13 @@ export class AuthService {
       }),
     )
   }
+
+  changePassword(currentPassword: string, newPassword: string): Promise<void> {
+    return firstValueFrom(
+      this.http.post<void>(`${this.apiUrl}/user/change-password`, {
+        currentPassword,
+        newPassword,
+      }),
+    )
+  }
 }
