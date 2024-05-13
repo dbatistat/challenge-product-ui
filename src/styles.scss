@@ -16,6 +16,18 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   margin-bottom: 10px;
 }
 
+.container-card {
+  margin-left: 3%;
+}
+
+.table-responsive {
+  display: block;
+  width: 100%;
+  overflow: auto;
+  min-height: auto;
+  max-height: calc(300vh - 25rem);
+}
+
 .spinner {
   left: 49%;
   position: fixed !important;

@@ -1,7 +1,7 @@
 import { Inject, Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { environment } from '../../../enviroments/enviroment'
-import { delay, firstValueFrom, of } from 'rxjs'
+import { firstValueFrom } from 'rxjs'
 import { LoggedIn, User } from '../models/auth.interfaces'
 
 @Injectable({

@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common'
 import { RouterOutlet } from '@angular/router'
 import { AppRoutingModule } from './app-routing.module'
 import { MatFormFieldModule } from '@angular/material/form-field'
+import { SharedModule } from './shared/shared.module'
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,6 +18,7 @@ import { MatFormFieldModule } from '@angular/material/form-field'
     RouterOutlet,
     BrowserAnimationsModule,
     CoreModule,
+    SharedModule,
     MatFormFieldModule,
     AppRoutingModule,
   ],

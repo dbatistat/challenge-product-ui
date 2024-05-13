@@ -18,6 +18,7 @@ import { MatButton } from '@angular/material/button'
 import { ResetPasswordComponent } from './reset-password/reset-password.component'
 import { MatIcon } from '@angular/material/icon'
 import { ResetPasswordRequestComponent } from './reset-password-request/reset-password-request.component'
+import { SharedModule } from '../../shared/shared.module'
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { ResetPasswordRequestComponent } from './reset-password-request/reset-pa
   imports: [
     CommonModule,
     AuthRoutingModule,
+    SharedModule,
     MatCardTitle,
     MatCard,
     MatCardSubtitle,

@@ -1,0 +1,109 @@
+<div class="container flex justify-center items-none">
+  <div class="tw-w-11/12 container-card" *ngIf="form && action">
+    <form [formGroup]="form">
+      <mat-card>
+        <mat-card-content>
+          <h2>{{ title }}</h2>
+          <mat-card-subtitle>* Debe llenar todos los campos obligatorios</mat-card-subtitle>
+          <div class="container card-responsive">
+            <div class="tw-flex tw-gap-2">
+              <div class="tw-w-1/4">
+                <mat-form-field class="full-width">
+                  <mat-label>Handle</mat-label>
+                  <input matInput formControlName="handle" type="text">
+                  <mat-error *ngIf="form.controls['handle'].hasError('required')">
+                    Handle es requerido
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="tw-w-1/4">
+                <mat-form-field class="full-width">
+                  <mat-label>SKU</mat-label>
+                  <input matInput formControlName="sku" type="text">
+                  <mat-error *ngIf="form.controls['sku'].hasError('required')">
+                    SKU es requerido
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="tw-w-1/4">
+                <mat-form-field class="full-width">
+                  <mat-label>Titulo</mat-label>
+                  <input matInput formControlName="title" type="text">
+                  <mat-error *ngIf="form.controls['title'].hasError('required')">
+                    Titulo es requerido
+                  </mat-error>
+                </mat-form-field>
+              </div>
+
+              <div class="tw-w-1/4">
+                <mat-form-field class="full-width">
+                  <mat-label>Codigo de Barra</mat-label>
+                  <input matInput formControlName="barcode" type="text">
+                  <mat-error *ngIf="form.controls['barcode'].hasError('required')">
+                    Codigod de barra es requerido
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="tw-flex tw-gap-2">
+              <div class="tw-w-1/4">
+                <mat-form-field class="full-width">
+                  <mat-label>Gramos</mat-label>
+                  <input matInput formControlName="grams" type="text">
+                  <mat-error *ngIf="form.controls['grams'].hasError('required')">
+                    Gramos es requerido
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="tw-w-1/4">
+                <mat-form-field class="full-width">
+                  <mat-label>Stock</mat-label>
+                  <input matInput formControlName="stock" type="text">
+                  <mat-error *ngIf="form.controls['stock'].hasError('required')">
+                    Stock es requerido
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="tw-w-1/4">
+                <mat-form-field class="full-width">
+                  <mat-label>Precio</mat-label>
+                  <input matInput formControlName="price" type="text">
+                  <mat-error *ngIf="form.controls['price'].hasError('required')">
+                    Precio es requerido
+                  </mat-error>
+                </mat-form-field>
+              </div>
+
+              <div class="tw-w-1/4">
+                <mat-form-field class="full-width">
+                  <mat-label>Comparar precio</mat-label>
+                  <input matInput formControlName="comparePrice" type="text">
+                  <mat-error *ngIf="form.controls['comparePrice'].hasError('required')">
+                    Comprar precio es requerido
+                  </mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="tw-flex tw-gap-2">
+              <div class="tw-w-2/4">
+                <mat-form-field class="full-width">
+                  <mat-label>Descripcion</mat-label>
+                  <textarea matInput formControlName="description" rows="5"></textarea>
+                </mat-form-field>
+              </div>
+            </div>
+            <div  class="tw-flex tw-mt-2 tw-p-0">
+              <button *ngIf="action !== 'view'" mat-raised-button id="login" color="primary" [disabled]="form.invalid || loading"
+                      (click)="save()">Guardar
+              </button>
+              <button mat-button id="resetPassword" (click)="cancel()" type="button" class="tw-ml-3">Volver</button>
+            </div>
+          </div>
+
+        </mat-card-content>
+        <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+      </mat-card>
+    </form>
+
+  </div>
+</div>
