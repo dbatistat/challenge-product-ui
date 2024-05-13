@@ -1,27 +1,32 @@
-# ChallengeProductUi
+# Challenge Product Ui
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.8.
+## Descripción
 
-## Development server
+Este proyecto es una prueba tecnica
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### Caracteristicas
 
-## Code scaffolding
+- Authenticación
+- Validación de usuario en rutas
+- Validación de expiración de token
+- Creacion de cuenta
+- Recuperacion de cuenta desde email
+- Cambio de contraseña
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Instalación
 
-## Build
+```bash
+$ npm install
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Inicializar App
 
-## Running unit tests
+- En caso de cambiar el puerto o url del api, hacer el cambio en el archivo `enviroment.ts`
+- Ejecutar el proyecto con el comando `ng serve`
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Por mejorar
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- Añadir un modulo o servicio para el manejo de errores
+- Añadir servicio de logging
+- Mejorar implementación para servicio al api
+- Mejorar UX en vistas
